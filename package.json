@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js src/app.js",
+    "start": "nodemon --exec babel-node -- src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,7 +18,11 @@
     "express-session": "^1.15.6",
     "mongoose": "^5.0.3",
     "morgan": "^1.9.0",
-    "nodemon": "^1.14.12",
     "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.14.12"
   }
 }
