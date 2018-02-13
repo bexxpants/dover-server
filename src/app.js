@@ -18,4 +18,4 @@ mongoose.connect(process.env.MONGODB_URL);
 app.use('/api/users', users);
 
 app.listen(process.env.PORT || 8082, () =>
-  console.log(`listen in localhost:${process.env.PORT}`));
+  console.log(`listen in localhost:${process.env.PORT || 8082}`));
