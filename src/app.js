@@ -41,5 +41,5 @@ app.post('/Api/signup', (req, res) =>{
  })
 })
 
-app.listen(process.env.PORT || 8081);
-console.log(`listen in localhost:${process.env.PORT}`)
+app.listen(process.env.PORT || 8081, () =>
+  console.log(`listen in localhost:${process.env.PORT}`));
