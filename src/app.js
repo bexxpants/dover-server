@@ -1,28 +1,23 @@
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import morgan from 'morgan';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 // const session = require('express-session');
 // const MongoStore = require('connect-mongo')(session);
-var signUp = require('../models/signup')
-const app = express();
-app.listen(process.env.PORT || 8081);
-// connect to db
+import signUp from '../models/signUp';
 
-const db = 'mongodb://master:password@ds117758.mlab.com:17758/doverusers';
-mongoose.connect(db);
-const conn = mongoose.connection;
-conn.once('open', () => console.log('connectedis'));
+dotenv.config();
+const app = express();
+
+mongoose.connect(process.env.MONGODB_URL);
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.get('/', (req, res) =>{
-  res.send('Please use /Api for Api functions');
-})
 
 app.post('/Api/signup', (req, res) =>{
   var db = req.db;
@@ -33,9 +28,9 @@ app.post('/Api/signup', (req, res) =>{
     username: username,
     password: password,
     email: email
-  })
+  });
 
-newSignUp.save(function (error) {
+  newSignUp.save(function (error) {
    if (error) {
      console.log(error)
    }
@@ -45,3 +40,6 @@ newSignUp.save(function (error) {
    })
  })
 })
+
+app.listen(process.env.PORT || 8081);
+console.log(`listen in localhost:${process.env.PORT}`)
