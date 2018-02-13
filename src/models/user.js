@@ -20,8 +20,8 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-schema.methods.setPassword = function setPassword(password) {
-  this.passwordHash = bcrypt.hashSync(password, 10);
+schema.methods.setPassword = function setPassword(pass) {
+  this.passwordHash = bcrypt.hashSync(pass, 10);
 };
 
 schema.methods.toAuthJSON = function toAuthJSON() {
@@ -39,5 +39,7 @@ schema.methods.generateJWT = function generateJWT() {
     process.env.JWT_SECRET
   );
 };
+
+schema.plugin(uniqueValidator, { message: "This email is already taken" });
 
 export default mongoose.model('User', schema);
