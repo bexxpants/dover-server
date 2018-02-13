@@ -5,6 +5,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import auth from './routes/auth';
 import users from './routes/users';
 
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(cors());
 mongoose.connect(process.env.MONGODB_URL);
 
 app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 app.listen(process.env.PORT || 8082, () =>
   console.log(`listen in localhost:${process.env.PORT || 8082}`));
