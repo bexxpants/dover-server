@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(authenticate);
 
 router.get('/', (req, res) => {
-  res.json({message: 'it works!!'});
+  Project.find({ userId: req.currentUser._id }).then(projects => res.json({ projects }));
 });
 
 router.post('/', (req, res) => {
