@@ -16,10 +16,18 @@ router.post('/', (req, res) => {
 
   project.save().then(project => {
     res.json({ project });
-    console.log(project);
   }).catch(err => {
     res.status(400).json({ errors: err });
   })
+});
+
+router.post('/delete', (req, res) => {
+  const id = req.body.id;
+  Project.deleteOne({ _id: id}).then(deleted =>
+    res.json({ data: deleted, message: 'deleted' }))
+    .catch(err => {
+      res.status(401).json({ errors: err})
+    });
 });
 
 export default router;
