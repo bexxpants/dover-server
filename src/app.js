@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import auth from './routes/auth';
 import users from './routes/users';
 import projects from './routes/projects';
+import bio from './routes/bio';
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URL);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/projects', projects);
+app.use('/api/bio', bio);
 
 app.listen(process.env.PORT || 8082, () =>
   console.log(`listen in localhost:${process.env.PORT || 8082}`));
