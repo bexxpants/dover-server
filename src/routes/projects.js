@@ -9,6 +9,11 @@ router.get('/', (req, res) => {
   Project.find({ userId: req.currentUser._id }).then(projects => res.json({ projects }));
 });
 
+router.get('/all', (req, res) => {
+  Project.find({})
+    .then(projects => res.json({ projects }));
+});
+
 router.post('/', (req, res) => {
   const userId = req.currentUser;
   const { name, description, budget, pay } = req.body.project;
