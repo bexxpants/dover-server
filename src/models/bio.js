@@ -33,7 +33,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  imgSrc: {
+  linkedinUsername: {
     type: String,
     required: false,
   },
