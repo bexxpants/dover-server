@@ -25,8 +25,15 @@ router.get('/all', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.currentUser;
-  const { name, description, budget, pay } = req.body.project;
-  const project = new Project({ name, description, budget, pay, userId });
+  const { name, description, budget, pay, skills } = req.body.project;
+  const project = new Project({
+    name,
+    description,
+    budget,
+    pay,
+    skills,
+    userId,
+  });
 
   project
     .save()
