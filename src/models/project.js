@@ -19,6 +19,10 @@ const schema = new mongoose.Schema({
     required: true,
     enum: ['Fixed price project', 'Hourly project'],
   },
+  skills: {
+    type: [String],
+    required: true,
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true
