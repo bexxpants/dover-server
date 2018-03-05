@@ -5,8 +5,8 @@ import Proposal from '../models/proposal';
 const router = express.Router();
 router.use(authenticate);
 
-router.get('/', (req, res) => {
-  Proposal.find({ projectId: req.body.projectId }).then((proposals) => {
+router.get('/:id', (req, res) => {
+  Proposal.find({ projectId: req.params.id }).then((proposals) => {
     res.json({ proposals });
   });
 });
